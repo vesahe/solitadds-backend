@@ -7,8 +7,8 @@ import analyze_users
 import pdb
 import logging
 
-_TEST_DATA_FILE = "../data/small/some-lupapiste-usage-pub-20161031.csv"
-_OPERATIVE_TEST_DATA_FILE = "../data/small/some-applications-operative-pub-20161031.csv"
+_TEST_DATA_FILE = "test-data/some-lupapiste-usage-pub-20161031.csv"
+_OPERATIVE_TEST_DATA_FILE = "test-data/some-applications-operative-pub-20161031.csv"
 
 class TestApplicationSummary(unittest.TestCase):
 
