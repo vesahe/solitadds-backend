@@ -37,10 +37,6 @@ class TestApplicationSummary(unittest.TestCase):
     def test_lead_time(self):
         self.assertEqual(self.apps[self.apps['applicationId'] == 'LP-1001-219067']['leadTime'].item(), 35)
 
-    def test_flow_efficiency(self):
-        self.assertEqual(self.apps[self.apps['applicationId'] == 'LP-1001-219067']['flowEfficiency'].item(), 77)
-
-        
 
 class TestUsersSummary(unittest.TestCase):
 

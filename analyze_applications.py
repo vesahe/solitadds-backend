@@ -40,7 +40,7 @@ def summarize(odf, udf):
             print("Processed {}%".format( int( float(n) / total_count * 100)))
 
 
-    summary = pd.merge(summary, odf, on = 'applicationId')
+    summary = pd.merge(odf, summary, on = 'applicationId')
 
     return summary
 
@@ -54,8 +54,7 @@ def parse_application_summary(application_id, app, app_events):
                 "sessionLength": count_session_length(app_events, SESSION_THRESHOLD_IN_MINUTES),
                 "sessionLengthApplicant": count_session_length_by_role(app_events, 'applicant', SESSION_THRESHOLD_IN_MINUTES),
                 "sessionLengthAuthority": count_session_length_by_role(app_events, 'authority', SESSION_THRESHOLD_IN_MINUTES),
-                "leadTime": count_days(app, 'createdDate', 'verdictGivenDate'),
-                "flowEfficiency": count_flow_efficiency(app, app_events, 'createdDate', 'verdictGivenDate')
+                "leadTime": count_days(app, 'createdDate', 'verdictGivenDate')
             }
     return result
 
