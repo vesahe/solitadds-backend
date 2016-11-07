@@ -3,3 +3,6 @@ analyze_users.pyc
 data_helper.pyc
 solitadds.log
 utils.pyc
+analyze/__init__.pyc
+analyze/applications.pyc
+analyze/users.pyc

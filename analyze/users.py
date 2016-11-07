@@ -3,7 +3,7 @@ from datetime import timedelta
 import pandas as pd
 import logging
 
-def summarize(odf, udf):
+def summarize_users(odf, udf):
     """ Create a summary of the applications as a table. Presumes events are in datetime order
           * Count number of comments for different roles
     """
@@ -26,7 +26,7 @@ def summarize(odf, udf):
 
         n = n + 1
         if n % 100 == 0 or n == total_count:
-            print("Processed {}%".format( int( float(n) / total_count * 100)))
+            print("Processing... {}%".format( int( float(n) / total_count * 100)))
 
     return summary
 

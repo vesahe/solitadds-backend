@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 import matplotlib, datetime
 
 import utils, data_helper
-import analyze_applications
-import analyze_users
+
+import analyze
 
 
 def parse_args():
@@ -47,10 +47,10 @@ if __name__ == "__main__":
     print("Total number of apps: {}".format(len(odf)))
     print("Total number of events: {} with time range from {} to {} ".format(len(udf), udf['datetime'].min(), udf['datetime'].max()))
 
-    application_summary =  analyze_applications.summarize(odf, udf)
+    application_summary =  analyze.summarize_applications(odf, udf)
     application_summary.to_csv(output_file_applications, sep=';', encoding='utf-8')
     
-    user_summary = analyze_users.summarize(odf, udf)
+    user_summary = analyze.summarize_users(odf, udf)
     user_summary.to_csv(output_file_users, sep=';', encoding='utf-8')
     
     print("Analysis took {} seconds".format(datetime.datetime.now() - analysis_start_time))

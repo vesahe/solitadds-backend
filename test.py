@@ -2,8 +2,7 @@ import unittest
 
 import data_helper
 import utils
-import analyze_applications
-import analyze_users
+import analyze
 import pdb
 import logging
 
@@ -16,7 +15,7 @@ class TestApplicationSummary(unittest.TestCase):
     def setUpClass(self):
         self.odf = data_helper.import_operative_data(_OPERATIVE_TEST_DATA_FILE)
         self.udf = data_helper.import_usage_data(_TEST_DATA_FILE)        
-        self.apps = analyze_applications.summarize(self.odf, self.udf)
+        self.apps = analyze.summarize_applications(self.odf, self.udf)
 
     def test_number_of_applications(self):
         self.assertEqual(len(self.apps), 10)
@@ -44,7 +43,7 @@ class TestUsersSummary(unittest.TestCase):
     def setUpClass(self):
         self.odf = data_helper.import_operative_data(_OPERATIVE_TEST_DATA_FILE)
         self.udf = data_helper.import_usage_data(_TEST_DATA_FILE)        
-        self.users = analyze_users.summarize(self.odf, self.udf)
+        self.users = analyze.summarize_users(self.odf, self.udf)
 
     def test_number_of_users(self):
         self.assertEqual(len(self.users), 71)
