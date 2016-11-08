@@ -42,6 +42,8 @@ def summarize_applications(odf, udf):
 
     summary = pd.merge(odf, summary, on = 'applicationId')
 
+#    summarize_comments_by_application(summary, application_ids)
+
     return summary
 
 def parse_application_summary(application_id, app, ae):
@@ -58,6 +60,10 @@ def parse_application_summary(application_id, app, ae):
                 "leadTime": count_days(app, 'createdDate', 'verdictGivenDate')
             }
     return result
+
+def comments_by_application(summary):
+    cba = summary[['applicationId', 'nApplicationComments']]
+    return cba
 
 def count_session_length(events, threshold_in_minutes):
     delta = timedelta(minutes = threshold_in_minutes)

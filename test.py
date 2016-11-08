@@ -17,6 +17,7 @@ class TestApplicationSummary(unittest.TestCase):
         self.odf = data_helper.import_operative_data(_OPERATIVE_TEST_DATA_FILE)
         self.udf = data_helper.import_usage_data(_TEST_DATA_FILE)        
         self.apps = analyze.summarize_applications(self.odf, self.udf)
+        self.coms = analyze.comments_by_application(self.apps)
 
     def test_number_of_applications(self):
         self.assertEqual(len(self.apps), 10)
@@ -36,6 +37,9 @@ class TestApplicationSummary(unittest.TestCase):
             
     def test_lead_time(self):
         self.assertEqual(self.apps[self.apps['applicationId'] == 'LP-1001-219067']['leadTime'].item(), 35)
+
+    def test_comments_by_applications(self):
+        self.assertEqual(self.coms['applicationId'].count(), 10)
 
 
 class TestUsersSummary(unittest.TestCase):
