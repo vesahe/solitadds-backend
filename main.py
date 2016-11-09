@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import sys, re, pdb
+import sys, re, pdb, os
 import logging
 import argparse
 
@@ -24,16 +24,17 @@ def parse_args():
     python main.py --input-file-operative ../data/small/some-applications-operative-pub-20161031.csv --input-file-usage ../data/small/some-lupapiste-usage-pub-20161031.csv --output-file-applications ../target/application-summary.csv --output-file-users ../target/user-summary.csv --output-file-comments ../target/comments-by-application.json
     """
     parser = argparse.ArgumentParser(description='SOLITADDS analysis')
-    parser.add_argument('-io', '--input-file-operative', help='Input CSV file for operative data', required=False)
-    parser.add_argument('-iu', '--input-file-usage', help='Input CSV file for usage data', required=True)
-    parser.add_argument('-oa', '--output-file-applications', help='Output CSV file for applications', required=False, default = None)
-    parser.add_argument('-ou', '--output-file-users', help='Output CSV file for users', required=False, default = None)
-    parser.add_argument('-oc', '--output-file-comments', help='Output JSON file for comments by applications', required=False, default = None)
+    parser.add_argument('-io', '--input-file-operative', help='Input CSV file for operative data', required = False, default = os.getcwd() + "/test-data/some-applications-operative-pub-20161031.csv")
+    parser.add_argument('-iu', '--input-file-usage', help='Input CSV file for usage data', required = False, default = os.getcwd() + "/test-data/some-lupapiste-usage-pub-20161031.csv")
+    parser.add_argument('-oa', '--output-file-applications', help='Output CSV file for applications', required = False, default = os.getcwd() + "summary-applications.csv")
+    parser.add_argument('-ou', '--output-file-users', help='Output CSV file for users', required=False, default = os.getcwd() + "summary-users.csv")
+    parser.add_argument('-oc', '--output-file-comments', help='Output JSON file for comments by applications', required=False, default = os.getcwd() + "comments-by-application.json")
     args = vars(parser.parse_args())
     return args
 
         
 if __name__ == "__main__":
+    pd.set_option('display.width', 240)
     args = parse_args()
     input_file_operative = args['input_file_operative']
     input_file_usage = args['input_file_usage']
